@@ -1,0 +1,14 @@
+﻿@model List<GovernorateDTO>
+
+<table>
+    <thead>
+        <tr><th>Id</th> <th>Gov Name</th> </tr>
+
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Id</td> <td>@item.GovName</td></tr>
+    }
+    </tbody>
+</table>

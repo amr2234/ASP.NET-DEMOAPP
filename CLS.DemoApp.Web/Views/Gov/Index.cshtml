@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@section Scripts{
+	<link href="~/lib/jqueryui/themes/start/jquery-ui.css" rel="stylesheet" />
+	<script src="~/lib/jqueryui/jquery-ui.js"></script><script src="~/lib/jtable/jquery.jtable.js"></script>
+	<script src="~/lib/jtable/jquery.jtable.min.js"></script>
+	<link href="~/lib/jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
+	<script>
+
+	$(function(){
+
+
+            $('#mytable').jtable({
+                title: 'Table of Governorate',
+                paging: true, //Enable paging
+                pageSize: 3, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'GovName ASC',
+                actions: {
+                    listAction: '/Gov/DisplayList',
+                    createAction: '/Gov/Create',
+                    updateAction: '/Gov/UpdatePerson',
+                    deleteAction: '/Gov/DeletePerson'
+                },
+                fields: {
+                    Id: {
+                        key: true,
+                        list: false
+                    },
+                    GovName: {
+                        title: 'Gov Name',
+                        width: '40%'
+                      
+                    },
+                    LogoName:{
+                        title: 'Logo Name',
+                        width: '40%'
+                    }
+                }
+            });
+
+
+
+
+           // $('#mytable').jtable('load');
+         
+            $("#LoadRecords").click(function(){
+
+                $('#mytable').jtable('load', {
+                    govname: $('#name').val()
+                });
+            
+            });
+
+            $("#LoadRecords").click();
+	
+	});
+
+	</script>
+
+}
+
+
+
+        Name: <input type="text" name="name" id="name" />
+      
+        <button type="button" id="LoadRecords">Load records</button>
+  
+<div id="mytable"></div>
